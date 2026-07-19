@@ -56,3 +56,26 @@ console.log(typeof anotherId)
 //        Arrays  =>  object
 //        Function  =>  function
 //        Object  =>  object
+
+// ****************************
+// MEMORY TYPES:- STACK , HEAP
+// stack is used in primitive datatypes
+// heap is used in non primitive types
+// whenever  stack memory is used we get a copy of the variable we declare whereas whenever a variable is in heap then we get the reference of the variable so all the changes take place in the original value of the variable 
+let channel="hello"//primitive type  
+let anothername=channel//it conntains the copy of the original value which is stored in it but when anothername is changed later the change is in the copy that's stored in anothername and not in the original value of channel 
+anothername="jfbhrjfd"
+console.log(anothername)
+console.log(channel)
+
+// object datatype 
+let userOne={
+    email:"user@google.com",
+    upi:"user@ybl"
+}
+// all the non primitive types go to heap and when we take reference of that value, we get the reference of the original value and not the copy of the original value
+let userTwo=userOne
+userTwo.email="ishi@google.com"
+console.log(userOne.email)
+console.log(userTwo.email)
+// all the changes that are made in the variable (to which we have assigned the original value) will be made in the original value as well and the original value will also get changed  
