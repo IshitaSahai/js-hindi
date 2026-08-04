@@ -30,4 +30,3 @@
 (function c(name){
     console.log(`db connected ${name}`)
 })("ishi");//it's a named iife as it has a name 
-
