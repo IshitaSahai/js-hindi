@@ -1,0 +1,79 @@
+<!-- DOM:-DOCUMENT OBJECT MODEL:Document is made from which model, what's its structure and how the page looks-->
+ <!-- The Document Object Model (DOM) is a structured way for web browsers to represent and interact with HTML pages, treating every part of a page (like tags, text, and attributes) as objects.(It's how JavaScript “talks” to HTML.)
+The DOM is explained as a model that represents the structure of an HTML document as a tree of objects (head, body, p, img ). Every element, attribute, and text is considered a "node" in this tree
+
+# Window and Document :-
+-The browser creates a window object that represents the browser tab or window.
+-window contains many properties and methods — one of them is document.
+-The document object represents the webpage and provides access to:
+    HTML elements.
+    Document structure.
+    Methods for DOM manipulation.
+
+    console.log(window.document); // Outputs the entire HTML document and methods for manipulation
+    console.log(document); //outputs entire document
+    console.dir(windows); //Outputs the entire HTML document and methods for manipulation
+
+
+!! Collections like HTMLCollection or NodeList are used to handle groups of elements, but they differ from standard arrays.
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dom learning</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color:#fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 id="title" class="heading">dom learning <span style="display: none;">test text</span></h1>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dol</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <h2>Lorem ipsum dolor sit.</h2>
+        <input type="password" name="" id="">
+        <ul>
+            <li class="list">one</li>
+            <li class="list">two</li>
+            <li class="list">three</li>
+            <li class="list">four</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia voluptate in optio, fuga non suscipit mollitia labore magni sint asperiores sit necessitatibus exercitationem tempore at quod, libero repudiandae voluptas quos.</p>
+    </div>
+</body>
+</html>
+
+<!-- dom structure:-
+      WINDOW
+         |
+      DOCUMENT
+         |
+        HTML
+   /            \
+  HEAD         BODY
+ /    \          |
+title meta      div(has an attribute)
+/       /       /          \
+text attribute h1(att)       p
+node            (text node) (text node)
+  --> 
+<!-- HTML Collection is somewhat like array but it's not the array so it has some things like array for eg: indexing-->
+ <!-- DOM manipulation:-
+  document.getElementById('firstHeading').innerHTML="<h1>hello</h1>" -->
+
+<!-- const title=document.getElementById("title")
+title.innerText//gives the text that's only getting displayed on the screen 
+'dom learning'
+title.textContent//gives the text that's present irrespective of the fact that it's not visible in the browser due to display hidden or any other reason 
+'dom learning test text'
+title.innerHTML//gives the entire html tag's value ie. if apart from the main tag of the portion that we wanna print, if there's any other tag that has been used then it'll also get printed 
+'dom learning <span style="display: none;">test text</span>' -->
+
+<!-- nodelist and htmlcollection aren't pure arrays, in order to confirm if they are pure arrays or not, we can check the properties in the prototype section when we write in the browser console, if it has foreach, map, push etc in its properties then it's the array otherwise it isn't-->
+<!-- querySelector gives single element
+querySelectorAll gives NodeList (collection) -->

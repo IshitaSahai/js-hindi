@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+    const parent=document.querySelector('.parent')
+    //console.log(parent)//gives the entire html of parent class as well as its contents 
+    // console.log(parent.children)
+    // console.log(parent.children[0])
+    // console.log(parent.children[1].innerHTML)
+    //looping via html collection
+    // parent.children.length gives the number of children 
+    // for (let i = 0; i < parent.children.length; i++) {
+    //     console.log(parent.children[i].innerHTML)
+    // }
+    parent.children[1].style.color="orange"
+    //moving from parent to child ie. selecting parent->child 
+    console.log(parent.firstElementChild)
+    console.log(parent.lastElementChild)
+    //moving from child to parent ie. selecting child->parent 
+    const day1=document.querySelector('.day')//only single value 
+    // console.log(day1)
+    // console.log(day1.parentElement)
+    // console.log(day1.nextElementSibling)
+    
+    console.log("node: ",parent.childNodes)//it gives all the child nodes while also counting the line breaks as the text but if there're multiple line breaks continuously wihtout any other text OR anything in between then only the first break is counted as the text and the rest are ignored 
+
+</script>
+</html>

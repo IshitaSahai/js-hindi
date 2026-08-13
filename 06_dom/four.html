@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM four</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>javascript</li>
+    </ul>
+</body>
+<script>
+    //adding elements inside ul
+    function addfnlang(langname){
+        const li=document.createElement('li');
+        li.innerHTML=`${langname}`//innerHTML traverses the entire tree and thus is inneficient so appendChild should be used in order to add the text as well by using createTextNode and then adding langname in it
+        const parent=document.querySelector('.language')
+        parent.appendChild(li)
+    }
+    addfnlang("python")
+    addfnlang("typescript")
+
+    function addoptilang(langname){
+        const li=document.createElement('li')
+        const addtext=document.createTextNode(langname)
+        li.appendChild(addtext)
+        document.querySelector('.language').appendChild(li)
+    }
+    addoptilang('golang')
+
+    //editing elements
+    const secondlang=document.querySelector('li:nth-child(2)');
+    //secondlang.innerHTML='mojo'//1st method:can replace directly using this 
+    const newli=document.createElement('li')
+    newli.textContent='mojo'//adding text in newli
+    secondlang.replaceWith(newli)//2nd method:by creating a new element then replacing using the method as done 
+    //another example:-
+    const firstlang=document.querySelector('li:first-child')
+    // const newli2=document.createElement('li')
+    // newli2.textContent='ts'
+    // firstlang.replaceWith(newli2)
+    //3rd method:-
+    firstlang.outerHTML='<li>tss</li>'
+
+    //removing element
+    const lastlang=document.querySelector('li:last-child')
+    lastlang.remove()
+</script>
+</html>
