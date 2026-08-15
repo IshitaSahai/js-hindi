@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" ></li><!--alt="" onclick="alert('owl')" //approach 1: this approach isn't correct as if it's used then there'll be problems when the application will scale, it's not a feasible approach, it's different from what's done in react as in react it's a framework/library of js and if in react it's used like this then it's used on a scalable code-->
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+
+<script>
+    //approach 2
+    //all the events in js except some run sequentially, js is a sequentially run language, but some exceptions are there in js events 
+    // document.getElementById('owl').onclick=function(){//it shouldn't be used as we don't get too much information by using onclick event, we should use event listeners as onclick event provides less functionalities as well and also the event listeners give the ability of propogation 
+    //     alert("owl clicked")
+    // }
+
+    //approach 3(best out of 3)
+    // document.getElementById('owl').addEventListener('click', function(){
+    //     alert("owl clicked again")
+    // },false)//eventlisteners can listen to so many events ranging from drag and drop,keyboard and mouse events and many tasks get completed using these 
+    //there's also a third parameter ie. false by default and there're some applications in the interviews that can't be completed without using false/true
+    //approach 4(using addEventListener method):was used when applications were run on the internet explorer 
+    //approach 5(using jQuery framework- on)
+    //events needed to study: type:type events of keyboards/mouse, timestamp:date and time activities, defaultPrevented:to stop default behaviour of any tag
+    //target, toElement, srcElement,currentTarget
+    //clientX, clientY, screenx, screenY
+    //altkey,ctrlkey,shiftkey,keyCode
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log(e)
+    // },false)
+    
+    //event propogation:event bubbling, event capturing
+    //if the default value ie. false is used then it's k/a event bubbling otherwise k/a event capturing
+    //example of event propogation :event bubbling=>bubbling up:-goes from inside to outside ie. first the action(console or anything) that'll be present in the inner element will take place then the outer one will take place //firstly owl will be shown as clicked then the ul
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul")
+    // },false)
+    
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("clicked owl")
+    // },false)
+
+    //event capturing mode : goes from top to bottom ie. the actions will be performed from outer to inner side //firstly ul will be shown as clicked then the owl
+    //  document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul")
+    // },true)
+    
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("clicked owl")
+    // },true)
+
+    //if we don't want the events to bubble then stopPropogation is used 
+    // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul")
+    // },false)
+    
+    // document.getElementById('owl').addEventListener('click', function(e){
+    //     console.log("clicked owl")
+    //     e.stopPropagation()//won't bubble up to the outer element
+    // },false)
+
+    // //e.preventDefault() is somewhat like e.stopPropagation()
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault()
+    //     e.stopPropagation()
+    //     console.log("goolge clicked")
+    // },false)
+
+    //mini project for practice:- whenever any image is clicked it gets disappeared 
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        // console.log(e.target);
+        // console.log(e.target.parentNode);
+        console.log(e.target.tagName)//gives the tag name of the target element
+        if(e.target.tagName==='IMG'){
+            console.log(e.target.id)
+            let removeit=e.target.parentNode
+            removeit.remove()
+        }
+
+        // or
+        // removeit.parentNode.removeChild(removeit)//it means remove the child of the parentnode that's getting selected ie. ul here
+        //if we click on the li then all the list items will get removed as the parent of li is ul and we're trying to remove the whole ul in that case so everything will be removed 
+
+        
+    },false)
+
+    //DEFAULT JS BEHAVIOUR 
+    //1) js is synchronous(sequential) ie. all things happen one after another 
+    //2) it's a single threaded lang: everything executes on a single thread 
+    //if only the engine of js is used then it may lead to execution choking or performance choking but it always comes with a runtime environment 
+
+    //execution context: execution takes place one line at a time on a single thread //each operatio waits for the previous one before executing 
+
+
+    //blocking (synchronous) non blocking(asynchronous) code 
+    //blocking code:blocks execution/flow of the program
+    //non blocking code: doesn't block the execution 
+
+</script>
+</html>

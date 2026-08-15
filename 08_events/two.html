@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>cac</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    
+    const say=function(){
+        console.log("is")
+    }
+    const changetext=function(){
+        document.querySelector('h1').innerHTML="best"
+    }
+    const changeme=setTimeout(changetext,2000)//after 2 seconds it performs the task once//method that calls an api //these aren't the core js functions they're only available via browser//clearInterval and clearTimeout are all the parts of these functions only and they're also important
+
+
+    //callback function doesn't need a name as it's written inside any method for eg: in this setInterval method whereas if a function is passed as a reference after being written somewhere then it needs to hv a name 
+
+
+    //setInterval is a function in which it repeatedly performs a task after a specific interval
+
+
+    // clearTimeout(changeme)//it won't allow the settimeout to execute at all that's y it should be applied on an event
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeme)
+        console.log("stopped")
+    })
+
+</script>
+</html>

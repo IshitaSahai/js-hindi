@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>caj</h1>
+    <button id="start">start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    const saydate=function(str){
+        console.log(str,Date.now())
+    }
+    //setInterval also has a 3rd parameter that can be passed as an argument in the function
+    
+    let intervalid;
+    document.querySelector('#start').addEventListener('click',function(){
+        intervalid=setInterval(saydate,1000,"hi")
+    },false)
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearInterval(intervalid)
+        console.log("stopped")
+    },false)
+    
+//js's default engine isn't asynchronous by default but its made asynchronous with the help of the apis and all these things setInterval ans setTimeout are all a part of asynchronous js, js in itself is synchronous but it's made asynchronous with the help of apis and the runtime environment with which it comes
+
+</script>
+</html>
