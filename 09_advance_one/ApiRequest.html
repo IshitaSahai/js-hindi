@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121; color:#fff;">
+     <!-- 0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete. -->
+
+<div id="card" height="500px" width="auto">
+    <img id="avtar" src="" alt="image">
+    <p id="followers">followers</p>
+</div>
+</body>
+<script>
+    //xml ajax request
+    
+    const xhr=new XMLHttpRequest()//method that contains all the states via which we can send or receive the data request //it's a class so we need to create its object
+    const requesturl='https://api.github.com/users/ishitasahai'
+
+    xhr.open('GET',requesturl)//it doesn't send the request .send() has to be done in order to call open()//takes 2 parameters: method, strings:- method:which type of request is to be sent, string:the data that we want in the code
+    // console.log("here")
+
+    xhr.setRequestHeader("Authorization", "token YOUR_TOKEN")
+
+
+    let imageurl; let followers;
+    // console.log(xhr.readyState)
+    //in order to track the readystate continuously:-
+    xhr.onreadystatechange=function(){
+        // console.log(xhr.readyState)
+        //detecting the state
+        // if(xhr.readyState===4){//when the state becomes 4 then do this 
+            // console.log(this.responseText)//this means rn we're talking abt current context so we use this in order to denote the current context 
+            // const data=JSON.parse(this.responseText)//converting the data from string to json//parse converts string to json 
+
+            // console.log(data)
+            // console.log(typeof data)//data is by default in the form of a string so in order to access any of its items it needs to be converted into json (object) that 
+            // console.log(data.followers)
+        // }
+
+        if(xhr.readyState===4){
+            const data=JSON.parse(this.responseText)
+            console.log(data)
+            imageurl=data.avatar_url
+            followers=data.followers
+            document.getElementById("avtar").src=imageurl
+            document.getElementById("followers").innerHTML=`followers: ${followers}`
+
+        }
+    }//as soon as the state changes, this function gets executed each time 
+    xhr.send()
+
+    //console and document isn't the part of core js, it's put in/injected by the runtime env of js
+
+    //there're many engines that are used to run js one of them is v8 which's written in c++ 
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACT</title>
+</head>
+<body>
+    <button>button clicked</button>
+</body>
+<script>
+    class react{
+        constructor(){
+            this.library="react"
+            this.server="http://localhost:3000"
+  
+            //requirement
+            document.querySelector('button').addEventListener('click',this.handleclick.bind(this))
+        }
+
+            handleclick(){
+                console.log("button is clicked")
+                console.log(this.server)
+            }
+    }
+    //as soon as the page loads, ann object of react is created 
+    const app=new react()
+    //as soon as an object is created, we get a reference of button and a method that gives some msg that either form has been submitted or button has been clicked
+
+
+</script>
+</html>
